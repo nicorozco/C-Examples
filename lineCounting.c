@@ -1,36 +1,40 @@
 #include <stdio.h>
-int main(void) {
+int main(void)
+{
 
-// declare variables to store values
-	int c,nl;
-// set c to get getchar()
-//getchar() reads the next input character from a text stream and returns that as its value
-	c = getchar();
+	//declaring file pointer
+
+	FILE *fPointer;
+
+	//open a file to get input from
 	
-	nl = 0;	
-// use while look to keep checking if we're at end of file
-// EOF value is -1
-	while (c != EOF){
+	fPointer = fopen("File.txt","r");
+	
+	// declare variables to store values
+	// c is a character from the function getc()
+		char c;
+		int nl;
+		
+	// set c to get getchar()
+	//getc() reads a single character from the current stream position and advances the stream position to the next character.
+	//int getc(FILE *stream);
 
-//use a if statement to check wether we have a new line by checking for the value '\n'
-// if we do have a value increase the value of nl by 1
-	 if ( c == '\n'){
-		nl++;
-	 }
-
+	//line counter	
+		nl = 0;	
+	// EOF value is -1
+	 	for (c = fgetc(fPointer); c != EOF; c = fgetc(fPointer)) 
+		{
+	//use a if statement to check wether we have a new line by checking for the value '\n'
+	// if we do have a value increase the value of nl by 1
+		 if ( c == '\n'){
+			nl++;
+	 	}
+	
+	//close the file
+		fclose(fPointer);
+	//print out the line value
+	 	printf("%d\n",nl);
 	}
-
-// at the end we want to print back the value of new line
-
-	printf("%d\n",nl);
-
-
-
-
-
-
-
-
 
 
 	return 0;

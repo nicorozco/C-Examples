@@ -48,46 +48,45 @@ int points[10] = {0,0,0,0,0,0,0,0,0,0};
 	//basically for each player
 	for (i = 0; i < userPlayerNum; i++)
 	{	
-	//first roll
-	do
-	{	
+	//first roll	
 		printf("%s\n",players[i]);
 		randomNum = (random() % 7);
-	} while (randomNum != pig[0]); 
-	{
-		int positionNum = randomNum;
-
-		switch(positionNum)
+	        while (randomNum != pig[0]) 
 		{
-		//case 0 is the value of SIDE
-			case 0:
-				printf(" roll 0, has %d\n",points[i]);
+		
+			int positionNum = randomNum;
+
+			switch(positionNum)
+			{
+				//case 0 is the value of SIDE
+				case 0:
+					printf(" roll 0, has %d\n",points[i]);
 					break;
-		//case 1 is the value of RAZORBACK
-			case 1:
-				//update points by 10
-				points[i] = points[i] + 10;
-				printf(" roll 10, has %d\n",points[i]);
-		//case 2 is the value of TROTTER
-			case 2:
-				//upate points 10
-				points[i] = points[0] + 10;
-				printf(" roll 10, has %d\n",points[i]);
+				//case 1 is the value of RAZORBACK
+				case 1:
+					//update points by 10
+					points[i] = points[i] + 10;
+					printf(" roll 10, has %d\n",points[i]);
+			//case 2 is the value of TROTTER
+				case 2:
+					//upate points 10
+					points[i] = points[0] + 10;
+					printf(" roll 10, has %d\n",points[i]);
 
-		//case 3 is the value SNOUTER
-			case 3:
-				//update points 15
-				points[i] = points[i] + 15;
-				printf(" roll 15, has %d\n",points[i]);
+			//case 3 is the value SNOUTER
+				case 3:
+					//update points 15
+					points[i] = points[i] + 15;
+					printf(" roll 15, has %d\n",points[i]);
 
-		//case 4 is the value of JOWLER
-			case 4:
-			//update points by 5
+			//case 4 is the value of JOWLER
+				case 4:
+				//update points by 5
 				points[i] = points[i] + 5;
 				printf(" roll 5, has %d\n",points[i]);
-		}
+			}
 
-	}
+		}
 	}
 
 	return 0;

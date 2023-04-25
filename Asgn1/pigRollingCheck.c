@@ -46,62 +46,78 @@ int points[10] = {0,0,0,0,0,0,0,0,0,0};
 	int p;
 	int i;
 	int randomNum;
-	//basically for each player
-	//while loop to check the points 
-	for (p = 0; p > userPlayerNum; p++) 
+	int winner = 0;
+	//each players turn but the exectures if it reaches player number, we need it so it goes if the points isn't 100
+while (winner == 0)
+{
+	for (p = 0; p < userPlayerNum; p++) 
 	{
-		// checks if the points is 100
-		while (points[p] <= 100) 
-		{
-			for (i = 0; i < userPlayerNum; i++)
-			{	
-	//first roll	
+		// for indexing throught points and the player
+		for (i = 0; i < userPlayerNum; i++)
+		{	
+			if (points[i] >= 100)
+			{
+				printf("%s won!",players[i]);
+				winner = 1;
+				break;
+			}
+			else
+			{
+				//first roll	
+				printf("the first roll\n");
 				printf("%s\n",players[i]);
+				//generating random number
 				randomNum = (random() % 7);
+			
+				//while run while the position isn't(0), if it 0 they can't roll
 	        		while (randomNum != pig[0]) 
-				{
+				{	
+					//generates random number
 					randomNum = (random() % 7);
 					int positionNum = randomNum;
-
-					switch(positionNum)
-					{		
-					//case 0 is the value of SIDE
-						case 0:
-							printf(" roll 0, has %d\n",points[i]);
-							points[i] = points[i];
-							break;
-					//case 1 is the value of RAZORBACK
-						case 1:
-							//update points by 10
-							points[i] += 10;
-							printf(" roll 10, has %d\n",points[i]);
-							break;
-					//case 2 is the value of TROTTER
-						case 2:
-						//upate points 10
-							points[i] += 10;
-							printf(" roll 10, has %d\n",points[i]);
-							break;
-					//case 3 is the value SNOUTER
-						case 3:
-						//update points 15
-							points[i] +=15;
-							printf(" roll 15, has %d\n",points[i]);
-							break;
-					//case 4 is the value of JOWLER
-						case 4:
-						//update points by 5
-							points[i] += 5;
-							printf(" roll 5, has %d\n",points[i]);
-							break;
 		
+					//just checkign the positions and adding points
+					switch(positionNum)
+					{
+						  
+							//case 0 is the value of SIDE
+							case 0:
+								printf(" roll 0, has %d\n",points[i]);
+								break;
+							//case 1 is the value of RAZORBACK
+							case 1:
+								//update points by 10
+								points[i] += 10;
+								printf(" roll 10, has %d\n",points[i]);
+								break;
+							//case 2 is the value of TROTTER
+							case 2:
+								//upate points 10
+								points[i] += 10;
+								printf(" roll 10, has %d\n",points[i]);
+								break;
+							//case 3 is the value SNOUTER
+							case 3:
+							//update points 15
+								points[i] +=15;
+								printf(" roll 15, has %d\n",points[i]);
+								break;
+							//case 4 is the value of JOWLER
+							case 4:
+							//update points by 5
+								points[i] += 5;
+								printf(" roll 5, has %d\n",points[i]);
+								break;
+				
 					}
-				}
-			}
-		}	
-	}	
+			  }
+		     } 
+				
+	   	}
+	}
+	
+}
 
-	printf("%d",points[0]);
 	return 0;
 }
 

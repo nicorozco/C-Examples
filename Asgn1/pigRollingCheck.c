@@ -9,14 +9,36 @@ int main(void){
 
 //user input for number of players
 	int userPlayerNum;
-	printf("Number of players (2-10)?");
+	printf("Number of players (2 to 10)? ");
 	scanf("%d", &userPlayerNum);
-//user input for random seed 
+
+	if (userPlayerNum < 2)
+	{	
+
+		fprintf(stderr, "Invalid number of players. Using 2 instead.\n");
+		userPlayerNum = 2;
+	}
+
+	
+
+//user input for random seed
+	long randomSeed;
 	long userRanSeed;
 	printf("Random-number seed? ");
 	scanf("%ld",&userRanSeed);
+
+	if (userRanSeed < 1) 
+	{
+		fprintf(stderr, "Invalid seee. Using 2023 instead.\n");
+		userRanSeed = 2023;
+		randomSeed = userRanSeed;
+	}
+	else
+	{	
+		randomSeed = userRanSeed;
+	}
 //setting randomseed to userinput
-	srandom(userRanSeed);
+srandom(randomSeed);
 const Positions pig[7] = {
 	SIDE,
 	SIDE,
@@ -52,26 +74,25 @@ while (winner == 0)
 {
 	for (p = 0; p < userPlayerNum; p++) 
 	{
+		printf("%s\n",players[p]);
 		// for indexing throught points and the player
 		for (i = 0; i < userPlayerNum; i++)
 		{	
-			if (points[i] >= 100)
-			{
-				printf("%s won!",players[i]);
-				winner = 1;
-				break;
-			}
-			else
-			{
-				//first roll	
-				printf("the first roll\n");
-				printf("%s\n",players[i]);
-				//generating random number
-				randomNum = (random() % 7);
+			//first roll	
+			//generating random number
+			randomNum = (random() % 7);
+		
 			
 				//while run while the position isn't(0), if it 0 they can't roll
 	        		while (randomNum != pig[0]) 
 				{	
+					if (points[i] >= 100)
+					{	
+						printf("%s won!",players[i]);
+						winner = 1;
+						break;
+					}
+
 					//generates random number
 					randomNum = (random() % 7);
 					int positionNum = randomNum;
@@ -110,13 +131,12 @@ while (winner == 0)
 								break;
 				
 					}
-			  }
+			 	 }
 		     } 
 				
 	   	}
 	}
 	
-}
 
 	return 0;
 }

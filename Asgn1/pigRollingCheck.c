@@ -73,7 +73,9 @@ int points[10] = {0,0,0,0,0,0,0,0,0,0};
 
 while (winner == 0)
 {	
+	printf("Stage 1: no winner");
 	//for player turn
+	printf("Stage 2: player turn");
 	for (p = 0; p < userPlayerNum; p++) 
 	{
 	
@@ -91,6 +93,7 @@ while (winner == 0)
 				
 			}
 			//while run while the position isn't(0), if it 0 they can't roll
+			printf("Stage 4:adding points");
 	        	while (done == 0) 
 			{	
 				//generates random number

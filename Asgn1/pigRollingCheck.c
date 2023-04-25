@@ -76,6 +76,7 @@ while (winner == 0)
 	//for player turn
 	for (p = 0; p < userPlayerNum; p++) 
 	{
+	
 		// for indexing throught points and the player
 		for (i = 0; i < userPlayerNum; i++)
 		{		

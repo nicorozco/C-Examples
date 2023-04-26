@@ -10,44 +10,31 @@ int main(void){
 //user input for number of players
 	int userPlayerNum;
 	printf("Number of players (2 to 10)? ");
-	scanf("%d", &userPlayerNum);
+	int scanf_result = scanf("%d", &userPlayerNum);
 
-	if (userPlayerNum < 2)
+	if (scanf_result < 1||userPlayerNum < 2 || userPlayerNum > 10)
 	{	
 
 		fprintf(stderr, "Invalid number of players. Using 2 instead.\n");
 		userPlayerNum = 2;
 	}
-
 	
 
 //user input for random seed
-	long randomSeed;
-	long userRanSeed;
-	printf("Random-number seed? ");
-	scanf("%ld",&userRanSeed);
+	unsigned seed;
 
-	if (userRanSeed < 1) 
+	printf("Random-number seed? ");
+	int num_assignments;
+	num_assignments = scanf("%u", &seed);
+	
+	if (num_assignments < 1) 
 	{
-		fprintf(stderr, "Invalid seee. Using 2023 instead.\n");
-		userRanSeed = 2023;
-		randomSeed = userRanSeed;
+		fprintf(stderr, "Invalid seed. Using 2023 instead.\n");
+		seed = 2023;
+		
 	}
-	else
-	{	
-		randomSeed = userRanSeed;
-	}
-//setting randomseed to userinput
-srandom(randomSeed);
-const Positions pig[7] = {
-	SIDE,
-	SIDE,
-	RAZORBACK,
-	TROTTER,
-	SNOUTER,
-	JOWLER,
-	JOWLER
-};	
+	 printf("value of seed %d\n",seed);
+	 srandom(seed);
 
 char players[10][50] = {
 	"Margaret Hamilton",

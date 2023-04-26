@@ -73,9 +73,9 @@ int points[10] = {0,0,0,0,0,0,0,0,0,0};
 
 while (winner == 0)
 {	
-	printf("Stage 1: no winner\n");
+	//printf("Stage 1: no winner\n");
 	//for player turn
-	printf("Stage 2: player turn\n");
+	//printf("Stage 2: player turn\n");
 	for (p = 0; p < userPlayerNum; p++) 
 	{
 	
@@ -85,17 +85,18 @@ while (winner == 0)
 			
 			//update the value for the new player
 			done = 0;
-			if (points[i] >= 100)
-			{	
-				printf("%s won!",players[i]);
-				winner = 1;
-				break;
-				
-			}
+		
 			//while run while the position isn't(0), if it 0 they can't roll
-			printf("Stage 3:adding points\n");
+			printf("%s\n",players[i]);
 	        	while (done == 0) 
 			{	
+				if (points[i] >= 100)
+				{	
+					printf("%s won!",players[i]);
+					winner = 1;
+					break;
+
+				}
 				//generates random number
 				randomNum = (random() % 7);
 				int positionNum = randomNum;

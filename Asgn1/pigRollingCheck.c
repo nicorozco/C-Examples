@@ -75,24 +75,34 @@ while (winner == 0)
 {	
 	//printf("Stage 1: no winner\n");
 	//for player turn
-	//printf("Stage 2: player turn\n");
 	for (p = 0; p < userPlayerNum; p++) 
 	{
 	
+		//printf("Stage 2: 1 whole round\n");
+
 		// for indexing throught points and the player
 		for (i = 0; i < userPlayerNum; i++)
 		{		
 			
 			//update the value for the new player
-			done = 0;
+			if(winner == 1)
+			{
+				done = 1;
+			}
+			else {
+
+				done = 0;
+				printf("%s\n",players[i]);
+
+			}
 		
 			//while run while the position isn't(0), if it 0 they can't roll
-			printf("%s\n",players[i]);
 	        	while (done == 0) 
 			{	
+								
 				if (points[i] >= 100)
 				{	
-					printf("%s won!",players[i]);
+					printf("%s won!\n",players[i]);
 					winner = 1;
 					break;
 

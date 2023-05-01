@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
+#include "mathlib.h"
 //defining static variable
 static int iters = 0;
 //defining constation of EPSILON
@@ -8,19 +8,20 @@ static int iters = 0;
 
 // contains the functions: sqrt_newton() and sqrt_newton_iters()
 // sqrt_newton() will compute the approximation the square root of the argument passed  and track the number of iterations taken by static variable local to file
-long double sqrt_newton(long double x)
+double sqrt_newton(double x)
 {
-	long double next_y = 1.0; 
-	long double y = 0.0;
+	int next_y = 1.0; 
+	int y = 0.0;
 
-	while ((fabs(next_y - y)) < EPSILON)
+	while ((absolute(next_y - y)) < EPSILON)
 	{
 		iters = 0;
 		y = next_y;
-		next_y = 0.5 *(y + x/y);
+		next_y = 0.5 * (y + x/y);
 		iters += 1;
-		return next_y;
+		
 	}
+	return next_y;
 }
 // sqrt_newton_iters() will just return the number of iterations taken
 
